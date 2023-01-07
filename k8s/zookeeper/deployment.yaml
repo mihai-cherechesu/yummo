@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yummo-zookeeper
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: yummo-zookeeper
+  template:
+    metadata:
+      labels:
+        app: yummo-zookeeper
+    spec:
+      containers:
+      - name: yummo-zookeeper
+        image: wurstmeister/zookeeper
+        ports:
+        - containerPort: 2181
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+          requests:
+            memory: "256Mi"
+            cpu: "500m"
+        env:
+          - name: ZOOKEEPER_CLIENT_PORT
+            value: "2181"

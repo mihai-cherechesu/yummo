@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yummo-kafka
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: yummo-kafka
+  template:
+    metadata:
+      labels:
+        app: yummo-kafka
+    spec:
+      containers:
+      - name: yummo-kafka
+        image: wurstmeister/kafka
+        ports:
+        - containerPort: 9092
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+          requests:
+            memory: "256Mi"
+            cpu: "500m"
+        env:
+          - name: KAFKA_ADVERTISED_LISTENERS
+            value: "PLAINTEXT://yummo-kafka.default.svc.cluster.local:9092"
+          - name: KAFKA_ADVERTISED_HOST_NAME
+            value: "kafka"
+          - name: KAFKA_ZOOKEEPER_CONNECT
+            value: "yummo-zookeeper.default.svc.cluster.local:2181"
+          - name: KAFKA_AUTO_CREATE_TOPICS_ENABLE
+            value: "true"
+          - name: KAFKA_CREATE_TOPICS
+            value: "transaction-1:1:1"
+          - name: KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR
+            value: "1"

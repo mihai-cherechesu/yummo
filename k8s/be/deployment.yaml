@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yummo-be
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: yummo-be
+  template:
+    metadata:
+      labels:
+        app: yummo-be
+    spec:
+      containers:
+      - name: yummo-be
+        image: paravirtualtishu/yummo-be:latest
+        ports:
+        - containerPort: 8091
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+          requests:
+            memory: "256Mi"
+            cpu: "500m"

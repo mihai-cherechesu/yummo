@@ -39,9 +39,9 @@ public class ProductService {
         List<Product> fullProductList = productRepository.findAll();
 
         if (categoryNames == null || categoryNames.isEmpty()) {
-            return fullProductList;
+                return fullProductList;
         }
-        
+
         List<Product> result = new ArrayList<>();
         
         for (Product product : fullProductList) {
