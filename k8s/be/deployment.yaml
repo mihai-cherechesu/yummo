@@ -15,6 +15,7 @@ spec:
       containers:
       - name: yummo-be
         image: paravirtualtishu/yummo-be:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 8091
         resources:

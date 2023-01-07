@@ -28,7 +28,7 @@ public class Producer {
     @Bean
     public KafkaAdmin kafkaAdmin() {
         Map<String, Object> configs = new HashMap<>();
-        configs.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, "kafka:9092");
+        configs.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, "yummo-kafka.default.svc.cluster.local:9092");
         return new KafkaAdmin(configs);
     }
 
