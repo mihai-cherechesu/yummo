@@ -169,7 +169,7 @@ function Table({ columns, data, dataSetter, user }) {
   const [ socket, setSocket ] = useState(null);
 
   useEffect(() => {
-    setSocket(io("http://localhost:5001"));
+    setSocket(io("http://yummo-socket.default.svc.cluster.local:5001"));
   }, [user]);
 
   useEffect(() => {

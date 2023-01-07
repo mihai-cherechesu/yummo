@@ -41,7 +41,7 @@ const ClientHome = () => {
   }
 
   useEffect(() => {
-    setSocket(io("http://localhost:5001"));
+    setSocket(io("http://yummo-socket.default.svc.cluster.local:5001"));
   }, []);
 
   useEffect(() => {

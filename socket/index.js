@@ -1,7 +1,7 @@
 import { Server } from "socket.io";
 
 // const clientOrigin = "http://medissistance-fe:3000";
-const clientOrigin = "http://localhost:3000";
+const clientOrigin = "http://yummo-fe.default.svc.cluster.local:3000";
 
 const io = new Server({
   cors: {

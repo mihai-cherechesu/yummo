@@ -22,7 +22,7 @@ public class Consumer {
         Map<String, Object> props = new HashMap<>();
         props.put(
             ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,
-            "kafka:9092");
+            "yummo-kafka.default.svc.cluster.local:9092");
         props.put(
             ConsumerConfig.GROUP_ID_CONFIG,
             "group-1");
