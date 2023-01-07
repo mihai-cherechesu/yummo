@@ -37,6 +37,11 @@ public class ProductService {
 
     public List<Product> getAllProductsByCategories(List<String> categoryNames) {
         List<Product> fullProductList = productRepository.findAll();
+
+        if (categoryNames == null || categoryNames.isEmpty()) {
+            return fullProductList;
+        }
+        
         List<Product> result = new ArrayList<>();
         
         for (Product product : fullProductList) {

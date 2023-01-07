@@ -139,14 +139,14 @@ services:
       KAFKA_CREATE_TOPICS: "transaction-1:1:1"
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
     networks:
-        - yummo-app
+      - yummo-app
 
-  gitlab-runner:
-    image: gitlab/gitlab-runner:latest
-    restart: always
-    volumes:
-      - ./srv/gitlab-runner/config:/etc/gitlab-runner
-      - /var/run/docker.sock:/var/run/docker.sock
+  yummo-socket:
+    image: paravirtualtishu/yummo-socket:latest
+    ports:
+    - "5001:5001"
+    networks:
+      - yummo-app
 
 networks:
   yummo-app:
