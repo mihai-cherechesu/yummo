@@ -1,0 +1,200 @@
+version: "3.8"
+
+services:
+  medissistance-fe:
+    depends_on:
+      - medissistance-be
+    links:
+      - medissistance-be
+    build: ./medissistance-web
+    restart: always
+    image: medissistance-fe
+    volumes:
+      - type: bind
+        source: ./medissistance-web
+        target: /app
+    ports:
+      - "3000:3000"
+    networks:
+      - medissistance-app
+
+  medissistance-be:
+    depends_on:
+      - postgres-medissistance
+      - kafka
+    links:
+      - postgres-medissistance
+    build: ./medisisstance
+    restart: always
+    image: medissistance-be
+    container_name: medissistance-be
+    env_file: global-variables.env
+    ports:
+      - "6000:8091"
+      - "8090:8090"
+    networks:
+      - medissistance-app
+
+  postgres-medissistance:
+    image: postgres
+    container_name: postgres-medissistance
+    ports:
+      - "5432:5432"
+    networks:
+      - medissistance-app
+    env_file: global-variables.env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    deploy:
+      mode: global
+      placement:
+        constraints: [node.role == manager]
+
+  db-tool:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "9800:80"
+    networks:
+      - medissistance-app
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    depends_on:
+      - postgres-medissistance
+
+  agent:
+    image: portainer/agent:2.13.1
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/lib/docker/volumes:/var/lib/docker/volumes
+    networks:
+      - medissistance-app
+    deploy:
+      mode: global
+      placement:
+        constraints: [node.platform.os == linux]
+
+  portainer:
+    image: portainer/portainer-ce:2.13.1
+    command: -H tcp://tasks.agent:9001 --tlsskipverify
+    ports:
+      - "9443:9443"
+      - "9000:9000"
+      - "8000:8000"
+    networks:
+      - medissistance-app
+    volumes:
+      - portainer_data:/data
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints: [node.role == manager]
+
+  nginx:
+    ports:
+      - "3050:80"
+    restart: always
+    image: medissistance-nginx
+    build:
+      dockerfile: Dockerfile
+      context: ./nginx
+    networks:
+      - medissistance-app
+    depends_on:
+      - medissistance-fe
+      - medissistance-be
+      - db-tool
+      - portainer
+      - medissistance-grafana
+
+  medissistance-grafana:
+    image: medissistance-grafana
+    build:
+      dockerfile: Dockerfile
+      context: ./grafana
+    ports:
+        - 30000:3000
+    restart: always
+    depends_on:
+        - medissistance-be
+    deploy:
+        placement:
+            constraints: [node.role == manager]
+    networks:
+        - medissistance-app
+    env_file: global-variables.env
+    volumes:
+      - grafana-storage:/var/lib/grafana
+
+  medissistance-mail-service:
+    depends_on:
+      - medissistance-be
+      - kafka
+    build: ./medisisstance-mail-sender-service
+    restart: always
+    image: medissistance-mail-service
+    container_name: medissistance-mail-service
+    env_file: global-variables.env
+    ports:
+      - "6060:8080"
+      - "8092:8092"
+    networks:
+      - medissistance-app
+
+  zookeeper:
+    image: wurstmeister/zookeeper
+    # image: niciqy/cp-zookeeper-arm64:7.0.1
+    ports:
+    - "2181:2181"
+    env_file: global-variables.env
+    networks:
+      - medissistance-app
+    deploy:
+      mode: global
+      placement:
+        constraints: [node.role == manager]
+
+  kafka:
+    image: wurstmeister/kafka
+    # image: niciqy/cp-kafka-arm64:7.0.1
+    ports:
+    - "9092:9092"
+    environment:
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_ADVERTISED_HOST_NAME: kafka
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'
+      KAFKA_CREATE_TOPICS: "transaction-1:1:1"
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    networks:
+        - medissistance-app
+    deploy:
+      mode: global
+      placement:
+        constraints: [node.role == manager]
+
+  gitlab-runner:
+    image: gitlab/gitlab-runner:latest
+    restart: always
+    volumes:
+      - ./srv/gitlab-runner/config:/etc/gitlab-runner
+      - /var/run/docker.sock:/var/run/docker.sock
+    deploy:
+      mode: global
+      placement:
+        constraints: [node.role == manager]
+
+networks:
+  medissistance-app:
+    name: medissistance-app
+
+volumes:
+  grafana-storage:
+  portainer_data:
+  postgres_data:
+  pgadmin_data:

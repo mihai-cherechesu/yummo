@@ -1,0 +1,90 @@
+.navbar-logo-img {
+	width: 15%;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.navbar-menu-img-container {
+  position: relative;
+}
+
+.navbar-drop-down {
+  position: absolute;
+  left: 0%;
+  width: 100px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14);
+  transition: height .4s ease;
+}
+
+.navbar-drop-down ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.navbar-drop-down li {
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+.navbar-drop-down li:hover {
+  background-color: rgba(0, 0, 0, 0.14);
+  cursor: pointer;
+}
+
+.navbar-user-img {
+  width: 50px;
+  margin-left: 2.5rem;
+  border-radius: 20%;
+}
+
+@keyframes img-scale {
+  0% {
+      transform: scale(1.0);
+  }
+  100% {
+      transform: scale(1.1);
+  }
+}
+
+.navbar-user-img:hover {
+  animation: img-scale 430ms ease-in-out infinite alternate
+}
+
+.navbar-links {
+  display: flex;
+  flex-direction: row;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.profile-menu {
+  margin-left: 2.5rem;
+}
+
+.navbar-links a {
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
+  text-decoration: none;
+  color: #2B2B43;
+}
+
+.vertical {
+  height: 2.0rem;
+  border: 1px solid #EDEEF2;
+}
+
+.navbar-links a:hover {
+	color: #1d7e96;
+	transition: 200ms ease-in;
+}

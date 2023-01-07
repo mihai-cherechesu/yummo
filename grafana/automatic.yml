@@ -1,0 +1,28 @@
+apiVersion: 1
+
+deleteDatasources:
+  - name: postgres
+    orgId: 1
+
+datasources:
+  - name: postgres
+    type: postgres
+    url: postgres-medissistance
+    user: postgres
+    database: pweb
+    basicAuth: false
+    basicAuthUser:
+    basicAuthPassword:
+    withCredentials:
+    isDefault: true
+    jsonData:
+      sslmode: "disable"
+      tlsAuth: false
+      tlsAuthWithCACert: false
+    secureJsonData:
+      password: postgres
+      tlsCACert: ""
+      tlsClientCert: ""
+      tlsClientKey: ""
+    version: 1
+    editable: true

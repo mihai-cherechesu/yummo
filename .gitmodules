@@ -1,0 +1,10 @@
+[submodule "medissistance-web"]
+	path = medissistance-web
+	url = git@gitlab.cs.pub.ro:mihai.cherechesu/medissistance-web.git
+	branch = main
+[submodule "medisisstance"]
+	path = medisisstance
+	url = git@gitlab.cs.pub.ro:bogdan_andrei.buga/medisisstance.git
+[submodule "medisisstance-mail-sender-service"]
+	path = medisisstance-mail-sender-service
+	url = git@gitlab.cs.pub.ro:bogdan_andrei.buga/medisisstance-mail-sender-service.git
