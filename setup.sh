@@ -16,7 +16,7 @@ then
     sleep 1
     docker service create --no-resolve-image --name registry --publish published=5000,target=5000 registry:2
     sleep 1
-    docker stack deploy --compose-file docker-compose.yml medissistance-stack
+    docker stack deploy --compose-file docker-compose.yml yummo-stack
     sleep 5
     cd grafana/
     curl -d "@email_alert_notifier.json" -H "Content-Type: application/json" -X POST http://admin:admin@localhost:30000/api/alert-notifications
@@ -24,13 +24,13 @@ then
 
 elif [[ "$1" == "stop" ]]
 then
-    docker stack rm medissistance-stack
+    docker stack rm yummo-stack
     sleep 1
     docker service rm registry
     sleep 1
     docker swarm leave --force
     sleep 1
-    docker rmi medissistance-fe medissistance-nginx medissistance-grafana medissistance-mail-service
+    docker rmi yummo-fe yummo-nginx yummo-grafana yummo-mail-service
 
     rm -rf `pwd`/srv
 
@@ -43,7 +43,7 @@ then
         --registration-token "GR1348941EE4wfnx2-y32ALrHHWny" \
         --executor "docker" \
         --docker-image docker:19.03 \
-        --description "idp-runner" \
+        --description "cloud-runner" \
         --run-untagged="true" \
         --locked="false" \
         --access-level="not_protected"

@@ -8,11 +8,11 @@
 		<version>2.6.7</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>pweb</groupId>
-	<artifactId>medical</artifactId>
+	<groupId>cloud</groupId>
+	<artifactId>fooddelivery</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>medical</name>
-	<description>Medical Equipment Glovo-like Web App</description>
+	<name>fooddelivery</name>
+	<description>Food Delivery Glovo-like Web App</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>

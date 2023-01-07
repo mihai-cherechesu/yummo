@@ -8,7 +8,7 @@
 		<version>2.6.7</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>bg2</groupId>
+	<groupId>cloud</groupId>
 	<artifactId>mailsender</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>mailsender</name>
