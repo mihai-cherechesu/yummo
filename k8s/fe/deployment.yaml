@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yummo-fe
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: yummo-fe
+  template:
+    metadata:
+      labels:
+        app: yummo-fe
+    spec:
+      containers:
+      - name: yummo-fe
+        image: paravirtualtishu/yummo-fe:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+          requests:
+            memory: "256Mi"
+            cpu: "500m"

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yummo-mail
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: yummo-mail
+  template:
+    metadata:
+      labels:
+        app: yummo-mail
+    spec:
+      containers:
+      - name: yummo-mail
+        image: paravirtualtishu/yummo-mail-service:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8092
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+          requests:
+            memory: "256Mi"
+            cpu: "500m"

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yummo-socket
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: yummo-socket
+  template:
+    metadata:
+      labels:
+        app: yummo-socket
+    spec:
+      containers:
+      - name: yummo-socket
+        image: paravirtualtishu/yummo-socket:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5001
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+          requests:
+            memory: "256Mi"
+            cpu: "500m"
