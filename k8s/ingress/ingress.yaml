@@ -10,13 +10,13 @@ spec:
   rules:
   - http:
       paths:
-      - path: /svc1/(.*)
-        pathType: Prefix
-        backend:
-          service:
-            name: gws
-            port:
-              number: 80
+      # - path: /svc1/(.*)
+      #   pathType: Prefix
+      #   backend:
+      #     service:
+      #       name: gws
+      #       port:
+      #         number: 80
       - path: /api/(.*)
         pathType: Prefix
         backend:
@@ -31,10 +31,17 @@ spec:
             name: yummo-socket
             port:
               number: 5001
-      - path: /
+      - path: /nginx-fe/(.*)
         pathType: Prefix
         backend:
           service:
             name: yummo-fe
             port:
-              number: 3000
+              number: 80
+      # - path: /nginx-fe/(.*)
+      #   pathType: Prefix
+      #   backend:
+      #     service:
+      #       name: hello
+      #       port:
+      #         number: 80
