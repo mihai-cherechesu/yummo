@@ -1,0 +1,15 @@
+.container {  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: 0.5fr repeat(6, 1fr);
+  gap: 1% 0px;
+  grid-auto-flow: row;
+}
+
+.Courier-NavBar { grid-area: 1 / 2 / 2 / 10; }
+.Courier-Table { grid-area: 2 / 2 / 6 / 10; }
+.Courier-Contact { grid-area: 6 / 1 / 8 / 11; border: 1px solid white; }
+
+.Courier-NavBar {
+  border-bottom: 1px solid #EDEEF2;
+}
+
