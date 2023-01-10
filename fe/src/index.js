@@ -2,7 +2,7 @@ import './index.css';
 import App from './App';
 import * as ReactDOM from 'react-dom/client';
 import { Auth0Provider } from '@auth0/auth0-react';
-import { HashRouter, useNavigate } from 'react-router-dom';
+import { BrowserRouter, useNavigate } from 'react-router-dom';
 
 const domain = process.env.REACT_APP_AUTH0_DOMAIN;
 const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
@@ -26,13 +26,13 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-  <HashRouter>
+  <BrowserRouter>
     <Auth0ProviderWithRedirectCallback
       domain={domain}
       clientId={clientId}
-      redirectUri="http://a385e3b6d9ba543b79fdf9b46ae600f1-1114754256.eu-central-1.elb.amazonaws.com/home"
+      redirectUri="https://a385e3b6d9ba543b79fdf9b46ae600f1-1114754256.eu-central-1.elb.amazonaws.com/home"
     >
       <App />
     </Auth0ProviderWithRedirectCallback>
-  </HashRouter>
+  </BrowserRouter>
 );
