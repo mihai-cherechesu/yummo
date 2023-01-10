@@ -19,10 +19,10 @@ spec:
         - containerPort: 9092
         resources:
           limits:
-            memory: "512Mi"
+            memory: "1024Mi"
             cpu: "500m"
           requests:
-            memory: "256Mi"
+            memory: "512Mi"
             cpu: "500m"
         env:
           - name: KAFKA_ADVERTISED_LISTENERS

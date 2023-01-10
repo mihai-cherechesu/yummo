@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gws-deployment
+  labels:
+    app: gws
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gws
+  template:
+    metadata:
+      labels:
+        app: gws
+    spec:
+      containers:
+      - name: gws
+        image: djayap/gowebservice:latest
+        ports:
+        - containerPort: 8080

@@ -92,7 +92,7 @@ public class OrderController {
         return ResponseEntity.ok(order);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "http://a385e3b6d9ba543b79fdf9b46ae600f1-1114754256.eu-central-1.elb.amazonaws.com/")
     @GetMapping("client/{email}")
     public ResponseEntity<?> getClientOrders(@PathVariable("email") String email) {
         User client = userService.getByEmail(email);
@@ -133,7 +133,7 @@ public class OrderController {
         return ResponseEntity.ok(mergedOrders);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "http://a385e3b6d9ba543b79fdf9b46ae600f1-1114754256.eu-central-1.elb.amazonaws.com/")
     @GetMapping("courier/{email}")
     public ResponseEntity<?> getCourierOrders(@PathVariable("email") String email) {
         User client = userService.getByEmail(email);
@@ -221,7 +221,7 @@ public class OrderController {
         return ResponseEntity.ok(order);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "http://a385e3b6d9ba543b79fdf9b46ae600f1-1114754256.eu-central-1.elb.amazonaws.com/")
     @PutMapping("accept/{id}")
     public ResponseEntity<Order> acceptOrder(@PathVariable Long id, @RequestBody String email) {
         Order order = orderService.updateOrderStatus(id, "Preparing");
@@ -240,7 +240,7 @@ public class OrderController {
         return ResponseEntity.ok(order);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "http://a385e3b6d9ba543b79fdf9b46ae600f1-1114754256.eu-central-1.elb.amazonaws.com/")
     @PutMapping("update/{id}")
     public ResponseEntity<Order> updateOrderStatus(@PathVariable Long id) {
         Order order = orderService.getById(id);
