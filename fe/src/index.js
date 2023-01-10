@@ -2,7 +2,7 @@ import './index.css';
 import App from './App';
 import * as ReactDOM from 'react-dom/client';
 import { Auth0Provider } from '@auth0/auth0-react';
-import { BrowserRouter, useNavigate } from 'react-router-dom';
+import { HashRouter, useNavigate } from 'react-router-dom';
 
 const domain = process.env.REACT_APP_AUTH0_DOMAIN;
 const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
@@ -26,7 +26,7 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-  <BrowserRouter>
+  <HashRouter>
     <Auth0ProviderWithRedirectCallback
       domain={domain}
       clientId={clientId}
@@ -34,5 +34,5 @@ root.render(
     >
       <App />
     </Auth0ProviderWithRedirectCallback>
-  </BrowserRouter>
+  </HashRouter>
 );
