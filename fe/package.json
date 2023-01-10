@@ -1,5 +1,6 @@
 {
   "name": "medissistance",
+  "homepage": "http://a385e3b6d9ba543b79fdf9b46ae600f1-1114754256.eu-central-1.elb.amazonaws.com/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
