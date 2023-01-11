@@ -8,7 +8,7 @@
 }
 
 .MuiSvgIcon-root.Mui-active {
-  color: #37ABC8 !important;
+  color: #faa604 !important;
   animation: rotation 3s infinite alternate;
 }
 
@@ -18,7 +18,7 @@
 }
 
 .MuiButton-root {
-  background-color: #37ABC8 !important; 
+  background-color: #faa604 !important; 
 }
 
 .container {  display: grid;

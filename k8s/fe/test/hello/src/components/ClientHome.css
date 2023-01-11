@@ -39,12 +39,12 @@
 }
 
 .filter:hover {
-  border: 1.8px solid #37ABC8;
+  border: 1.8px solid #faa604;
   transition: 200ms ease-in;
 }
 
 .filter-pressed {
-  border: 2px solid #37ABC8;
+  border: 2px solid #faa604;
   margin-right: 1rem;
   margin-left: 1rem;
   border-radius: 16px;
@@ -58,7 +58,7 @@
 .filter-pressed small {
   font-size: 0.8rem;
   line-height: 18px;
-  color: #37ABC8;
+  color: #faa604;
   margin-bottom: 0.8rem;
 }
 
@@ -86,7 +86,7 @@
   content: attr(value);
   font-size: 1rem;
   color: #fff;
-  background: #37ABC8;
+  background: #faa604;
   border-radius: 50%;
   padding: 0 5px;
   position: relative;
@@ -112,7 +112,7 @@
   padding: .5em;
   border-radius: 999px;
   line-height: .66em;
-  color:#37ABC8;
+  color:#faa604;
   text-align:center;
   min-width: 1em;
 
@@ -141,7 +141,7 @@
 .order-button {
   width: 120px;
   height: 43px;
-  background: #37ABC8;
+  background: #faa604;
   border-radius: 18px;
   color: #FFFFFF;
   font-weight: 100;
@@ -150,7 +150,7 @@
 
 .order-button:hover {
   color: #2B2B43;
-  border: 1.8px solid #37ABC8;
+  border: 1.8px solid #faa604;
   transition: 200ms ease-in;
 }
 
@@ -184,7 +184,7 @@
 }
 
 .plus-minus button {
-  background: #37ABC8;
+  background: #faa604;
   border-radius: 40%;
   border-style: none;
   width: 2rem;
@@ -204,7 +204,7 @@
 
 .plus-minus button:hover {
   color: #2B2B43;
-  border: 1.8px solid #37ABC8;
+  border: 1.8px solid #faa604;
   transition: 200ms ease-in;
 }
 

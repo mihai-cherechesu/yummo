@@ -21,12 +21,12 @@ const ClientHome = () => {
   const cardsNumber = 6;
 
   const filterIndexArray = [
-    'Pharma',
-    'Face masks', 
-    'Emergency', 
-    'Airway',
-    'Mobility', 
-    'Hygiene'
+    'Pizza',
+    'Chinese', 
+    'Burgers', 
+    'Healthy',
+    'Fast food', 
+    'Mexican'
   ];
 
   const [ basket, setBasket ]                         = useState([]);
@@ -197,7 +197,7 @@ const ClientHome = () => {
         }
       )
   }
-
+  
 	return (
     <div className="home-container">
       <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet"></link>
@@ -205,12 +205,12 @@ const ClientHome = () => {
         <NavBar />
       </div>
 
-      <div className={`F1 ${filterClassArray[0]}`} onClick={() => changeFilterStyle(0)}><small>Pharma</small></div>
-      <div className={`F2 ${filterClassArray[1]}`} onClick={() => changeFilterStyle(1)}><small>Face masks</small></div>
-      <div className={`F3 ${filterClassArray[2]}`} onClick={() => changeFilterStyle(2)}><small>Emergency</small></div>
-      <div className={`F4 ${filterClassArray[3]}`} onClick={() => changeFilterStyle(3)}><small>Airway</small></div>
-      <div className={`F5 ${filterClassArray[4]}`} onClick={() => changeFilterStyle(4)}><small>Mobility</small></div>
-      <div className={`F6 ${filterClassArray[5]}`} onClick={() => changeFilterStyle(5)}><small>Hygiene</small></div>
+      <div className={`F1 ${filterClassArray[0]}`} onClick={() => changeFilterStyle(0)}><small>Pizza</small></div>
+      <div className={`F2 ${filterClassArray[1]}`} onClick={() => changeFilterStyle(1)}><small>Chinese</small></div>
+      <div className={`F3 ${filterClassArray[2]}`} onClick={() => changeFilterStyle(2)}><small>Burgers</small></div>
+      <div className={`F4 ${filterClassArray[3]}`} onClick={() => changeFilterStyle(3)}><small>Healthy</small></div>
+      <div className={`F5 ${filterClassArray[4]}`} onClick={() => changeFilterStyle(4)}><small>Fast food</small></div>
+      <div className={`F6 ${filterClassArray[5]}`} onClick={() => changeFilterStyle(5)}><small>Mexican</small></div>
       
       <div className="home-Contact">
         <FooterContainer />

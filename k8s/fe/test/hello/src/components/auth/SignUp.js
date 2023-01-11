@@ -154,7 +154,7 @@ export const SignUp = () => {
       </div>
 
       <div className="A4">
-        <div className="presentation-message-2">We have launched the Ukraine appeal to raise money to support a tetanus vaccination programme and facilitate the supply of medical equipment for Ukraine.</div>
+        <div className="presentation-message-2">Our wide selection of cuisines and options for customization ensure that there's something for everyone.</div>
       </div>
       <div className="sign-up-Contact">
         <FooterContainer />

@@ -57,13 +57,13 @@
 
   color: #FFFFFF;
   border-style: none;
-  background: #37ABC8;
+  background: #faa604;
   box-shadow: 0px 8px 20px rgba(78, 96, 255, 0.16);
   border-radius: 8px;
 }
 
 .profile-submit-button:hover {
-  color: #1d7e96;
+  color: #b67d0c;
 	transition: 200ms ease-in;
 }
 

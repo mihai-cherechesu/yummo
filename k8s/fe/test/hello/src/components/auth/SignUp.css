@@ -72,7 +72,7 @@
 }
 
 .submit-button {
-	background: radial-gradient(circle, rgba(55, 171, 200, 1) 0%, rgba(93, 193, 218, 1) 100%);
+	background: radial-gradient(circle, rgb(250, 166, 4) 0%, rgb(226, 190, 10) 100%);
 	border-radius: 1rem;
 	height: calc(1.5vw + 1.5vh);
 
@@ -81,7 +81,7 @@
 }
 
 .submit-button:hover {
-	color: #1d7e96;
+	color: #b67d0c;
 	transition: 200ms ease-in;
 }
 
@@ -108,7 +108,7 @@
 
 .login-button {
 	background-color: #FFFFFF;
-	color: #37ABC8;
+	color: #faa604;
 	font-weight: bold;
 	font-size: calc(0.45vw + 0.45vh);
 
@@ -118,7 +118,7 @@
 
 
 .login-button:hover {
-	color: #1d7e96;
+	color: #b67d0c;
 	transition: 200ms ease-in;
 }
 
@@ -127,7 +127,7 @@
 }
 
 .A2 {
-	background: radial-gradient(circle, rgba(55, 171, 200, 1) 20%, rgba(93, 193, 218, 1) 100%);
+	background: radial-gradient(circle, rgb(250, 166, 4) 20%, rgb(226, 190, 10) 100%);
 }
 
 .Pics {

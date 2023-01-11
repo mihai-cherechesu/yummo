@@ -27,7 +27,7 @@ const NavBar = () => {
             onClick={() => 
               navigate("/home")
             }
-          >Medical gear
+          >Food
           </a>) :
 
         (<a 

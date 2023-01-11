@@ -58,7 +58,7 @@ const Styles = styled.div`
   }
 
   .pagination button {
-    background: #37ABC8;
+    background: #faa604;
     border-radius: 15px;
     border-style: none;
     color: #FFFFFF;
@@ -70,7 +70,7 @@ const Styles = styled.div`
   }
 
   .pagination button:hover {
-    color: #2B2B43;
+    color: #b67d0c;
     border: 1px solid #37ABC8;
     transition: 200ms ease-in;
   }
@@ -81,7 +81,7 @@ const Styles = styled.div`
     font-weight: bold;
     font-size: 16px;
 
-    background: #37ABC8;
+    background: #faa604;
     border-radius: 10px;
     border-style: none;
     color: #FFFFFF;
@@ -89,7 +89,7 @@ const Styles = styled.div`
 
   .accept-button:hover {
     color: #2B2B43;
-    border: 1.8px solid #37ABC8;
+    border: 1.8px solid #faa604;
     transition: 200ms ease-in;
   }
 
@@ -134,7 +134,7 @@ const Styles = styled.div`
 
   .state-button:hover {
     color: #2B2B43;
-    border: 1.8px solid #37ABC8;
+    border: 1.8px solid #faa604;
     transition: 200ms ease-in;
   }
 `
