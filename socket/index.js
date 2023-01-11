@@ -12,8 +12,9 @@ const io = new Server(httpServer, {
   cors: {
     origin: clientOrigin
   },
-  transports: ['polling']
 });
+
+const nsp = io.of("/socket/");
 
 let onlineClients = [];
 let onlineCouriers = [];
@@ -32,9 +33,6 @@ const removeUser = (socketId) => {
 }
 
 const removeUserByEmail = (email) => {
-  console.log("Remove existing user from arrays: ");
-  console.log(onlineClients);
-  console.log(onlineCouriers);
   onlineCouriers = onlineCouriers.filter(user => user.email !== email);
   onlineClients = onlineClients.filter(user => user.email !== email); 
 }
@@ -45,12 +43,10 @@ const getUser = (email, role) => {
     onlineClients.find(user => user.email === email);
 }
 
-io.on("connection", (socket) => {
-  // console.log("On connection!");
+nsp.on("connection", (socket) => {
   process.stdout.write("On connection!");
 
   socket.on("newUser", ({email, role}) => {
-    // console.log("On newUser: " + email + " " + role)
     process.stdout.write("On newUser: " + email + " " + role);
 
     removeUserByEmail(email);
@@ -59,11 +55,9 @@ io.on("connection", (socket) => {
 
   socket.on("sendOrder", ({email, orderId}) => {
     process.stdout.write("Send order from " + email + " on order: " + orderId);
-    // console.log("Send order from " + email + " on order: " + orderId)
     onlineClients.forEach((c) => {
         process.stdout.write("Send order notification to socket: ", c.socketId + " " + c.email);
-        console.log("Send order notification to socket: ", c.socketId + " " + c.email);
-        io.to(c.socketId).emit("getOrder", {
+        nsp.to(c.socketId).emit("getOrder", {
           email,
           orderId
         });
@@ -72,7 +66,7 @@ io.on("connection", (socket) => {
 
   socket.on("orderAccepted", ({txEmail, rxEmail, orderId}) => {
     const rxUser = getUser(rxEmail, "client");
-    io.to(rxUser.socketId).emit("notifyClientOrderAccepted", {
+    nsp.to(rxUser.socketId).emit("notifyClientOrderAccepted", {
       txEmail, 
       orderId,
     })
