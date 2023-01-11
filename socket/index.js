@@ -1,6 +1,6 @@
 import { Server } from "socket.io";
 
-const clientOrigin = "http://hello.default.svc.cluster.local:80";
+const clientOrigin = "https://a385e3b6d9ba543b79fdf9b46ae600f1-1114754256.eu-central-1.elb.amazonaws.com/nginx-fe/";
 
 const io = new Server({
   cors: {

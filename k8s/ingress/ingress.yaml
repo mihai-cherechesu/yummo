@@ -17,7 +17,14 @@ spec:
             name: yummo-be
             port:
               number: 8091
-      - path: /socket.io/(.*)
+      - path: /socket/(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: yummo-socket
+            port:
+              number: 5001
+      - path: /(socket.io/.*)
         pathType: Prefix
         backend:
           service:
