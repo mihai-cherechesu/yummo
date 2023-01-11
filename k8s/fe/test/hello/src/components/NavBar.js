@@ -79,7 +79,7 @@ const NavBar = () => {
                 </li>
                 <li 
                   onClick={() => 
-                    logout({ returnTo: "http://a385e3b6d9ba543b79fdf9b46ae600f1-1114754256.eu-central-1.elb.amazonaws.com/sign-up" })
+                    logout({ returnTo: "https://a385e3b6d9ba543b79fdf9b46ae600f1-1114754256.eu-central-1.elb.amazonaws.com/#/sign-up" })
                   }
                   >Logout
                 </li>
