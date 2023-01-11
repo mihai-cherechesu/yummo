@@ -12,6 +12,7 @@ const io = new Server(httpServer, {
   cors: {
     origin: clientOrigin
   },
+  transports: ['polling']
 });
 
 let onlineClients = [];
