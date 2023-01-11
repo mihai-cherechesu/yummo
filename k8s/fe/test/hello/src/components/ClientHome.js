@@ -6,6 +6,8 @@ import CartIcon from "./CartIcon";
 import { useAuth0 } from "@auth0/auth0-react";
 import Loading from "./Loading";
 import { io } from "socket.io-client";
+import cert from "../resources/server.cert";
+
 
 import { NotificationContainer } from 'react-notifications';
 import { createNotification } from '../utils/notifier';
@@ -40,9 +42,20 @@ const ClientHome = () => {
     setArtificialLoading(false);
   }
 
+  // let certText;
+  // fetch(raw)
+  // .then(r => r.text())
+  // .then(text => {
+  //   certText = text
+  // });
+
   useEffect(() => {
-    setSocket(io("http://a385e3b6d9ba543b79fdf9b46ae600f1-1114754256.eu-central-1.elb.amazonaws.com/socket/", { secure: false }));
-  }, []);
+    setSocket(io("https://a385e3b6d9ba543b79fdf9b46ae600f1-1114754256.eu-central-1.elb.amazonaws.com/socket/", { 
+        secure: true, 
+        ca: cert,
+      }
+    ));
+  }, [user]);
 
   useEffect(() => {
     socket?.emit("newUser", {

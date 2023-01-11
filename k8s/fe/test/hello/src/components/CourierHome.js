@@ -4,6 +4,7 @@ import { useTable, usePagination } from 'react-table'
 import { useAuth0 } from '@auth0/auth0-react';
 import { useNavigate } from 'react-router-dom'
 import { io } from "socket.io-client";
+import cert from "../resources/server.cert";
 
 import NavBar from './NavBar'
 import './CourierHome.css'
@@ -168,8 +169,13 @@ function Table({ columns, data, dataSetter, user }) {
   const navigate = useNavigate();
   const [ socket, setSocket ] = useState(null);
 
+
   useEffect(() => {
-    setSocket(io("http://a385e3b6d9ba543b79fdf9b46ae600f1-1114754256.eu-central-1.elb.amazonaws.com/socket/", { secure: false }));
+    setSocket(io("https://a385e3b6d9ba543b79fdf9b46ae600f1-1114754256.eu-central-1.elb.amazonaws.com/socket/", { 
+        secure: true, 
+        ca: cert,
+      }
+    ));
   }, [user]);
 
   useEffect(() => {
@@ -324,32 +330,6 @@ function Table({ columns, data, dataSetter, user }) {
           Page{' '}
           {pageIndex + 1} of {pageOptions.length}{' '}
         </span>
-        {/* <span>
-          Go to page:{' '}
-          <input
-            className='go-to-page'
-            type="number"
-            defaultValue={pageIndex + 1}
-            onChange={e => {
-              const page = e.target.value ? Number(e.target.value) - 1 : 0
-              gotoPage(page)
-            }}
-            style={{ width: '100px' }}
-          />
-        </span>{' '}
-        <select
-          className='pagination-show'
-          value={pageSize}
-          onChange={e => {
-            setPageSize(Number(e.target.value))
-          }}
-        >
-          {[10, 20, 30, 40, 50].map(pageSize => (
-            <option key={pageSize} value={pageSize}>
-              Show {pageSize}
-            </option>
-          ))}
-        </select> */}
       </div>
 
       <NotificationContainer/>
