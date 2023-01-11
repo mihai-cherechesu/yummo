@@ -169,7 +169,7 @@ function Table({ columns, data, dataSetter, user }) {
   const [ socket, setSocket ] = useState(null);
 
   useEffect(() => {
-    setSocket(io("https://a385e3b6d9ba543b79fdf9b46ae600f1-1114754256.eu-central-1.elb.amazonaws.com/socket/"));
+    setSocket(io("https://a385e3b6d9ba543b79fdf9b46ae600f1-1114754256.eu-central-1.elb.amazonaws.com/socket.io/"));
   }, [user]);
 
   useEffect(() => {
