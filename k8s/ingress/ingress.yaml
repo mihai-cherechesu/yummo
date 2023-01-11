@@ -31,13 +31,13 @@ spec:
             name: yummo-socket
             port:
               number: 5001
-      # - path: /nginx-fe/(.*)
-      #   pathType: Prefix
-      #   backend:
-      #     service:
-      #       name: yummo-fe
-      #       port:
-      #         number: 80
+      - path: /yummo-fe/(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: yummo-fe
+            port:
+              number: 3000
       - path: /nginx-fe/(.*)
         pathType: Prefix
         backend:

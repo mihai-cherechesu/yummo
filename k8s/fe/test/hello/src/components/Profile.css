@@ -1,0 +1,74 @@
+.container {  
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: 0.5fr repeat(3, 1fr) 0.5fr repeat(2, 1fr);
+  gap: 1% 0px;
+  grid-auto-flow: row;
+}
+
+.Profile-Contact { grid-area: 6 / 1 / 8 / 11; border: 1px solid white; }
+.Profile-Navbar { grid-area: 1 / 2 / 2 / 10; }
+.Profile-Info { grid-area: 2 / 4 / 5 / 8; }
+.Profile-Info-Buttons { grid-area: 5 / 4 / 5 / 8; }
+
+.Profile-Navbar {
+  border-bottom: 1px solid #EDEEF2;
+}
+
+.Profile-Info {
+  border: 1px solid #EDEEF2;
+  border-radius: 10px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.profile-heading {
+  font-weight: normal;
+  margin-left: 17px;
+}
+
+.ro-input {
+  background: #EDEEF2;
+}
+
+.input-box {
+  color: #2B2B43;
+  font-style: normal;
+  font-size: 15px;
+}
+
+.item {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 5%;
+}
+
+.profile-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.profile-submit-button {
+  align-items: center;
+
+  width: 135px;
+  height: 44px;
+
+  color: #FFFFFF;
+  border-style: none;
+  background: #37ABC8;
+  box-shadow: 0px 8px 20px rgba(78, 96, 255, 0.16);
+  border-radius: 8px;
+}
+
+.profile-submit-button:hover {
+  color: #1d7e96;
+	transition: 200ms ease-in;
+}
+
+.PhoneInputInput {
+  border: 1px solid #C7C8D2;
+	border-radius: 1rem;
+	height: calc(1.5vw + 1.5vh);
+}
