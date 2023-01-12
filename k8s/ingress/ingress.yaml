@@ -39,3 +39,17 @@ spec:
             name: yummo-fe
             port:
               number: 80
+      - path: /monitoring/(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: yummo-grafana
+            port:
+              number: 3000
+      - path: /login
+        pathType: Prefix
+        backend:
+          service:
+            name: yummo-grafana
+            port:
+              number: 3000
