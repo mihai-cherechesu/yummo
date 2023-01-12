@@ -28,7 +28,7 @@ const addNewUser = (email, role, socketId) => {
 const printList = (event, list, str) => {
   process.stdout.write("[" + event + "]: for" + str + " [")
   list.forEach(function(v) {
-    process.stdout.write(v + ", ")
+    process.stdout.write("{email: " + v.email + ", socketId: " + v.socketId + "}, ")
   })
   process.stdout.write("]\n")
 }
@@ -86,7 +86,7 @@ nsp.on("connection", (socket) => {
   })
 
   socket.on("disconnect", () => {
-    process.stdout.write("Got disconnected: " + socket.id) + "\n";
+    process.stdout.write("Got disconnected: " + socket.id + "\n");
     removeUser(socket.id);
   })
 });
