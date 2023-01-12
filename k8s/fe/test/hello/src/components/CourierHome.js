@@ -4,7 +4,6 @@ import { useTable, usePagination } from 'react-table'
 import { useAuth0 } from '@auth0/auth0-react';
 import { useNavigate } from 'react-router-dom'
 import { io } from "socket.io-client";
-import cert from "../resources/server.cert";
 
 import NavBar from './NavBar'
 import './CourierHome.css'
@@ -169,12 +168,9 @@ function Table({ columns, data, dataSetter, user }) {
   const navigate = useNavigate();
   const [ socket, setSocket ] = useState(null);
 
-  console.log("The cert: " + cert)
-
   useEffect(() => {
-    setSocket(io("https://a385e3b6d9ba543b79fdf9b46ae600f1-1114754256.eu-central-1.elb.amazonaws.com/socket/", { 
-        secure: true, 
-        ca: cert,
+    setSocket(io("http://a385e3b6d9ba543b79fdf9b46ae600f1-1114754256.eu-central-1.elb.amazonaws.com/socket/", { 
+        secure: false, 
         transports: ['websocket'],
         reconnection: true,
       }

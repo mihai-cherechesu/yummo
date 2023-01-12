@@ -1,13 +1,9 @@
 import { Server } from "socket.io";
-import { createServer } from "https";
-import { readFileSync } from "fs";
+import { createServer } from "http";
 
 const clientOrigin = "https://a385e3b6d9ba543b79fdf9b46ae600f1-1114754256.eu-central-1.elb.amazonaws.com";
 
-const httpServer = createServer({
-  cert: readFileSync("./certs/server.cert"),
-  key: readFileSync("./certs/server.key"),
-});
+const httpServer = createServer();
 const io = new Server(httpServer, {
   cors: {
     origin: clientOrigin
