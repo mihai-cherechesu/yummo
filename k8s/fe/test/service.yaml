@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: hello
+  name: yummo-fe
 spec:
   type: ClusterIP
   selector:
-    app: hello
+    app: yummo-fe
   ports:
   - protocol: TCP
     port: 80

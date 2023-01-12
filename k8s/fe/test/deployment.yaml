@@ -1,21 +1,28 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: hello
+  name: yummo-fe
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: hello
+      app: yummo-fe
   template:
     metadata:
       labels:
-        app: hello
+        app: yummo-fe
     spec:
       containers:
-        - name: hello
-          image: paravirtualtishu/nginx-fe:latest
-          imagePullPolicy: Always
-          ports:
-            - containerPort: 80
+      - name: yummo-fe
+        image: paravirtualtishu/nginx-fe:latest
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 80
+        resources:
+          limits:
+            memory: "1024Mi"
+            cpu: "500m"
+          requests:
+            memory: "512Mi"
+            cpu: "500m"
       restartPolicy: Always

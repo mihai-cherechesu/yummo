@@ -36,6 +36,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: hello
+            name: yummo-fe
             port:
               number: 80
