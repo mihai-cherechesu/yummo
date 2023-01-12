@@ -70,7 +70,7 @@ nsp.on("connection", (socket) => {
 
     onlineClients.forEach((c) => {
         process.stdout.write("Send order notification to socket: ", c.socketId + " " + c.email + "\n");
-        nsp.to(c.socketId).emit("getOrder", {
+        io.to(c.socketId).emit("getOrder", {
           email,
           orderId
         });
@@ -79,7 +79,7 @@ nsp.on("connection", (socket) => {
 
   socket.on("orderAccepted", ({txEmail, rxEmail, orderId}) => {
     const rxUser = getUser(rxEmail, "client");
-    nsp.to(rxUser.socketId).emit("notifyClientOrderAccepted", {
+    io.to(rxUser.socketId).emit("notifyClientOrderAccepted", {
       txEmail, 
       orderId,
     })
