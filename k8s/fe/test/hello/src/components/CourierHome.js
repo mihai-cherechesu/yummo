@@ -289,17 +289,17 @@ function Table({ columns, data, dataSetter, user }) {
                       {
                         cell.value === 'Pending' && i === row.cells.length - 1 ?
                           (user && user[rolesClaimKey][0] === 'client' ?
-                            <button className="state-button"  onClick={() => handleViewDetails(row.values)} style={{ background: '#D18006' }}>Pending</button> :
+                            <button className="state-button"  onClick={() => handleViewDetails(row.values)} style={{ background: '#fea604' }}>Pending</button> :
                             <button className="accept-button" onClick={() => handleAcceptOrder(row.values)}>Accept</button>
                           ) :
                         cell.value === 'Preparing' && i === row.cells.length - 1 ?
-                          <button className="state-button" onClick={() => handleViewDetails(row.values)} style={{ background: '#37ABC8' }}>Preparing</button> :
+                          <button className="state-button" onClick={() => handleViewDetails(row.values)} style={{ background: '#e75e04' }}>Preparing</button> :
 
                         cell.value === 'Delivering' && i === row.cells.length - 1 ?
-                          <button className="state-button" onClick={() => handleViewDetails(row.values)} style={{ background: '#3EA100' }}>Delivering</button> :
+                          <button className="state-button" onClick={() => handleViewDetails(row.values)} style={{ background: '#fe3200' }}>Delivering</button> :
 
                         cell.value === 'Finished' && i === row.cells.length - 1 ?
-                          <button className="state-button" onClick={() => handleViewDetails(row.values)} style={{ background: '#3EA100' }}>Finished</button> :
+                          <button className="state-button" onClick={() => handleViewDetails(row.values)} style={{ background: '#bc3700' }}>Finished</button> :
                           
                         cell.render('Cell')
                       }

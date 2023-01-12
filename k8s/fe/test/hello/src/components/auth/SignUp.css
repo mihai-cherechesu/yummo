@@ -100,7 +100,7 @@
 .login-question {
   font-style: normal;
   font-weight: 100;
-  font-size: calc(0.5vw + 0.5vh);
+  font-size: calc(0.53vw + 0.53vh);
 
   letter-spacing: 0.1px;
   color: #545563;
@@ -110,7 +110,7 @@
 	background-color: #FFFFFF;
 	color: #faa604;
 	font-weight: bold;
-	font-size: calc(0.45vw + 0.45vh);
+	font-size: calc(0.51vw + 0.51vh);
 
 	border: none;
 	height: 0%;
@@ -157,7 +157,7 @@
 .presentation-img-6 {
 	position: absolute;
 	left: 17%;
-	top: 50%;
+	top: 45%;
 
 	z-index: 0;
 	border-radius: 5%;

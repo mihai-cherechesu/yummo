@@ -16,13 +16,10 @@ let onlineClients = [];
 let onlineCouriers = [];
 
 const addNewUser = (email, role, socketId) => {
-  let utfEmail = Buffer.from(email, 'utf-8').toString();
-  let utfSocketId = Buffer.from(socketId, 'utf-8').toString();
-
   if (role === "courier") {
-    !onlineCouriers.some(user => user.email === email) && onlineCouriers.push({utfEmail, utfSocketId});
+    !onlineCouriers.some(user => user.email === email) && onlineCouriers.push({email, socketId});
   } else if (role === "client") {
-    !onlineClients.some(user => user.email === email) && onlineClients.push({utfEmail, utfSocketId});
+    !onlineClients.some(user => user.email === email) && onlineClients.push({email, socketId});
   }
 }
 
@@ -72,8 +69,7 @@ nsp.on("connection", (socket) => {
     printList("RECVORDER, couriers", onlineCouriers, email);
 
     onlineClients.forEach(function(c) {
-      process.stdout.write("Send order notification to socket: ", c.socketId + " " + c.email + "\n");
-      io.to(c.socketId).emit("getOrder", {
+      nsp.to(c.socketId).emit("getOrder", {
         email,
         orderId
       });

@@ -11,7 +11,7 @@ const CartIcon = (count) => {
 
   return (
     <span className="fa-stack fa-1x has-badge cart-test">
-      <i className="fa fa-circle fa-stack-2x" style={{color: '#C7C8D2'}}></i>
+      <i className="fa fa-circle fa-stack-2x" style={{color: '#faa604'}}></i>
       <i className="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
     </span>
   )
