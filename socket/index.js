@@ -18,15 +18,13 @@ let onlineCouriers = [];
 const addNewUser = (email, role, socketId) => {
   if (role === "courier") {
     !onlineCouriers.some(user => user.email === email) && onlineCouriers.push({email, socketId});
-    printList("ADDNEWUSER, clients", onlineClients, email);
   } else if (role === "client") {
     !onlineClients.some(user => user.email === email) && onlineClients.push({email, socketId});
-    printList("ADDNEWUSER, couriers", onlineCouriers, email);
   }
 }
 
 const printList = (event, list, str) => {
-  process.stdout.write("[" + event + "]: for" + str + " [")
+  process.stdout.write("[" + event + "]: for " + str + " [")
   list.forEach(function(v) {
     process.stdout.write("{email: " + v.email + ", socketId: " + v.socketId + "}, ")
   })
@@ -61,6 +59,8 @@ nsp.on("connection", (socket) => {
 
     removeUserByEmail(email);
     addNewUser(email, role, socket.id);
+    printList("ADDNEWUSER, clients", onlineClients, email);
+    printList("ADDNEWUSER, couriers", onlineCouriers, email);
   });
 
   socket.on("sendOrder", ({email, orderId}) => {
