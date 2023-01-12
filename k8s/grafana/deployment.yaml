@@ -1,0 +1,40 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yummo-grafana
+  labels:
+    app: yummo-grafana
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: yummo-grafana
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: yummo-grafana
+    spec:
+      securityContext:
+        runAsUser: 0
+      containers:
+      - image: paravirtualtishu/yummo-grafana:latest
+        name: yummo-grafana
+        ports:
+        - containerPort: 3000
+        volumeMounts:
+        - name: yummo-grafana-vol
+          mountPath: /var/lib/grafana
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+          requests:
+            memory: "256Mi"
+            cpu: "500m"
+      volumes:
+      - name: yummo-grafana-vol
+        persistentVolumeClaim:
+          claimName: yummo-grafana-vol

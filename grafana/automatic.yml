@@ -7,9 +7,9 @@ deleteDatasources:
 datasources:
   - name: postgres
     type: postgres
-    url: postgres-medissistance
+    url: postgresql-dev.default.svc.cluster.local:5432
     user: postgres
-    database: pweb
+    database: food
     basicAuth: false
     basicAuthUser:
     basicAuthPassword:

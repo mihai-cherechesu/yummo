@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolumeClaim # Create PVC
+metadata:
+  name: yummo-grafana-vol # Sets name of PV
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce # Sets read and write access
+  resources:
+    requests:
+      storage: 2Gi # Sets volume size
