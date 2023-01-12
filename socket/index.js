@@ -16,10 +16,13 @@ let onlineClients = [];
 let onlineCouriers = [];
 
 const addNewUser = (email, role, socketId) => {
+  let utfEmail = Buffer.from(email, 'utf-8').toString();
+  let utfSocketId = Buffer.from(socketId, 'utf-8').toString();
+
   if (role === "courier") {
-    !onlineCouriers.some(user => user.email === email) && onlineCouriers.push({email, socketId});
+    !onlineCouriers.some(user => user.email === email) && onlineCouriers.push({utfEmail, utfSocketId});
   } else if (role === "client") {
-    !onlineClients.some(user => user.email === email) && onlineClients.push({email, socketId});
+    !onlineClients.some(user => user.email === email) && onlineClients.push({utfEmail, utfSocketId});
   }
 }
 
@@ -68,13 +71,13 @@ nsp.on("connection", (socket) => {
     printList("RECVORDER, clients", onlineClients, email);
     printList("RECVORDER, couriers", onlineCouriers, email);
 
-    onlineClients.forEach((c) => {
-        process.stdout.write("Send order notification to socket: ", c.socketId + " " + c.email + "\n");
-        io.to(c.socketId).emit("getOrder", {
-          email,
-          orderId
-        });
-    })  
+    onlineClients.forEach(function(c) {
+      process.stdout.write("Send order notification to socket: ", c.socketId + " " + c.email + "\n");
+      io.to(c.socketId).emit("getOrder", {
+        email,
+        orderId
+      });
+    })
   })
 
   socket.on("orderAccepted", ({txEmail, rxEmail, orderId}) => {
